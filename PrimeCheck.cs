@@ -1,5 +1,5 @@
 
-using System.Math;
+using System;
 
 namespace PrimeTime
 {
@@ -7,15 +7,16 @@ namespace PrimeTime
     {
         private int numberToCheck;
         private int checkLimit;
+        var displayHandler = new DisplayHandler();
 
         private CommandResult Check(CommandResult command)
         {
-            DisplayHandler.Display(command);
+            displayHandler.Display(command);
 
             switch(command.Command)
             {
                 case Command.CheckPrime:
-                    numberToCheck = Abs(int.Parse(command.Argument));
+                    numberToCheck = Math.Abs(int.Parse(command.Argument));
 
                     bool even = numberToCheck % 2 == 0;
                     bool isOne = numberToCheck == 1;
@@ -28,7 +29,7 @@ namespace PrimeTime
                     
                     else
                     {
-                        checkLimit = (int) Floor(Sqrt((double) numberToCheck));
+                        checkLimit = (int) Math.Floor(Math.Sqrt((double) numberToCheck));
                         return Check(new CommandResult(Command.NewDivisor, "3"));
 
                     }
@@ -48,7 +49,7 @@ namespace PrimeTime
                     }
                     else
                     {
-                        DisplayHandler.Display(new CommandResult(Command.NotDivisible, ""));
+                        displayHandler.Display(new CommandResult(Command.NotDivisible, ""));
                         int newDivisor = divisor + 2;
                         return Check(new CommandResult(Command.NewDivisor, newDivisor.ToString()));
                     }
@@ -61,11 +62,11 @@ namespace PrimeTime
 
         public CommandResult Run(CommandResult command)
         {
-            bool incorrectCommand = command.Command == CommandResult.CheckPrime;
+            bool incorrectCommand = command.Command != CommandResult.CheckPrime;
 
             if (incorrectCommand)
             {
-                DisplayHandler.Display(new CommandResult(Command.InvalidCommand, command.Argument));
+                displayHandler.Display(new CommandResult(Command.InvalidCommand, command.Argument));
                 return new CommandResult(Command.Main, "");
             }
 
@@ -75,7 +76,7 @@ namespace PrimeTime
 
             if (invalidArgument)
             {
-                DisplayHandler.Display(new CommandResult(Command.InvalidArgument, command.Argument));
+                displayHandler.Display(new CommandResult(Command.InvalidArgument, command.Argument));
                 return new CommandResult(Command.Main, "");
             }
 
