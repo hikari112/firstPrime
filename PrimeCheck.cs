@@ -67,7 +67,7 @@ namespace PrimeTime
 
         public CommandResult Run(CommandResult command)
         {
-            bool incorrectCommand = command.Command != CommandResult.CheckPrime;
+            bool incorrectCommand = command.Command != Command.CheckPrime;
 
             if (incorrectCommand)
             {

@@ -10,7 +10,7 @@ namespace PrimeTime
             var displayHandler = new DisplayHandler();
             var primeCheck = new PrimeCheck(displayHandler);
 
-            displayHandler.Display(new Command(Command.Main, ""));
+            displayHandler.Display(new CommandResult(Command.Main, ""));
 
             CommandResult command;
 
