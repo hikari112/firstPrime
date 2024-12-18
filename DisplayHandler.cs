@@ -1,3 +1,4 @@
+using System;
 
 namespace PrimeTime
 {
@@ -5,6 +6,7 @@ namespace PrimeTime
     {
         private void WaitClear()
         {
+            Console.WriteLine("\nPress Any Key To Continue...");
             Console.ReadKey();
             Console.Clear();
         }
@@ -15,7 +17,7 @@ namespace PrimeTime
             WaitClear();
         }
 
-        private void Display(CommandResult command)
+        public void Display(CommandResult command)
         {
             Console.Clear();
 
@@ -51,7 +53,7 @@ namespace PrimeTime
                     break;
 
                 case Command.InvalidArgument:
-                    Console.WriteLine($"{command.Argument} is an invalid argument.")
+                    Console.WriteLine($"{command.Argument} is an invalid argument.");
                     WaitClear();
                     break;
 
@@ -61,7 +63,7 @@ namespace PrimeTime
                     break;
 
                 case Command.Help:
-                    Console.Clear;
+                    Console.Clear();
                     Console.WriteLine("Available commands:");
                     Console.WriteLine("check <number> - Check if a number is prime");
                     Console.WriteLine("help - Show this help message");

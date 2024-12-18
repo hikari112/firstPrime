@@ -1,3 +1,4 @@
+using System;
 
 namespace PrimeTime
 {
@@ -6,7 +7,8 @@ namespace PrimeTime
         private string GetUserInput()
         {
             Console.Write("> ");
-            return Console.ReadLine();
+            string? command = Console.ReadLine();
+            return command ?? "";
         }
 
         private Command ToCommand(string input)
