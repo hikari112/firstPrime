@@ -9,7 +9,7 @@ namespace PrimeTime
             Console.Clear();
         }
 
-        private void InvalidCommand()
+        private void UnknownCommand()
         {
             Console.WriteLine("Invalid Command...");
             WaitClear();
@@ -27,35 +27,40 @@ namespace PrimeTime
                     Console.WriteLine("Type 'help' for commands");
                     break;
 
-                case CommandResult.CheckPrime:
+                case Command.CheckPrime:
                     Console.WriteLine($"Checking if {command.Argument} is prime...");
                     break;
 
-                case CommandResult.NewDivisor:
+                case Command.NewDivisor:
                     Console.WriteLine($"Checking {command.Argument} for divisibility: ");
                     break;
 
-                case CommandResult.NotDivisible:
+                case Command.NotDivisible:
                     Console.WriteLine(" Is not divisible.");
                     break;
 
-                case CommandResult.IsPrime:
+                case Command.IsPrime:
                     Console.WriteLine($"{command.Argument} is prime!");
                     WaitClear();
                     break;
 
-                case CommandResult.IsNotPrime:
+                case Command.IsNotPrime:
                     Console.WriteLine(" Is divisible.");
                     Console.WriteLine($"{command.Argument} is not prime!");
                     WaitClear();
                     break;
 
-                case CommandResult.InvalidArg:
+                case Command.InvalidArgument:
                     Console.WriteLine($"{command.Argument} is an invalid argument.")
                     WaitClear();
                     break;
 
-                case CommandResult.Help:
+                case Command.InvalidCommand:
+                    Console.WriteLine($"{command.Command} is and invalid command.");
+                    WaitClear();
+                    break;
+
+                case Command.Help:
                     Console.Clear;
                     Console.WriteLine("Available commands:");
                     Console.WriteLine("check <number> - Check if a number is prime");
@@ -69,13 +74,13 @@ namespace PrimeTime
                     Console.WriteLine("Goodbye!");
                     break;
 
-                case CommandResult.Unknown:
+                case Command.Unknown:
                     Console.Clear();
-                    InvalidCommand();
+                    UnknownCommand();
                     break;
 
                 default:
-                    InvalidCommand();
+                    UnknownCommand();
                     break;
             }
         }

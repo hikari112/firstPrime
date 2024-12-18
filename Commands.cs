@@ -9,7 +9,8 @@ namespace PrimeTime
         IsPrime,
         NotDivisible,
         IsNotPrime,
-        InvalidArg,
+        InvalidArgument,
+        InvalidCommand,
         Help,
         Exit,
         Unknown
