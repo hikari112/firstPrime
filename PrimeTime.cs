@@ -10,21 +10,31 @@ namespace PrimeTime
             var displayHandler = new DisplayHandler();
             var primeCheck = new PrimeCheck(displayHandler);
 
-            displayHandler.Display(new CommandResult(Command.Main, ""));
 
             CommandResult command;
+            command = new CommandResult(Command.Main, "");
 
             do
             {
+
+                displayHandler.Display(command);
                 command = commandHandler.GetNextCommand();
 
-                if (command.Command == Command.CheckPrime)
+                switch (command.Command)
                 {
-                    command = primeCheck.Run(command);
-                }
-                else
-                {
-                    displayHandler.Display(command);
+                    case Command.CheckPrime:
+                        command = primeCheck.Run(command);
+                        break;
+
+                    case Command.Exit:
+                        displayHandler.Display(command);
+                        break;
+
+                    default:
+                        displayHandler.Display(command);
+                        command = new CommandResult(Command.Main, "");
+                        break;
+
                 }
             } while (command.Command != Command.Exit);
         }
