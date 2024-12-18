@@ -29,7 +29,7 @@ namespace PrimeTime
 
                     if (even || isOne || isZero)
                     {
-                        return Check(new CommandResult(Command.IsNotPrime, command.Argument));
+                        return Check(new CommandResult(Command.IsPrime, command.Argument));
                     }
                     
                     else
