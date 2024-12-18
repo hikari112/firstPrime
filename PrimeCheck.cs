@@ -7,7 +7,12 @@ namespace PrimeTime
     {
         private int numberToCheck;
         private int checkLimit;
-        var displayHandler = new DisplayHandler();
+        private DisplayHandler displayHandler;
+
+        public PrimeCheck(DisplayHandler display)
+        {
+            displayHandler = display;
+        }
 
         private CommandResult Check(CommandResult command)
         {
