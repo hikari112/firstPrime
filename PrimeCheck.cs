@@ -21,7 +21,11 @@ namespace PrimeTime
             switch(command.Command)
             {
                 case Command.CheckPrime:
-                    numberToCheck = Math.Abs(int.Parse(command.Argument));
+                    try {
+                        numberToCheck = Math.Abs(int.Parse(command.Argument));
+                    } catch (OverflowException) {
+                        return new CommandResult(Command.InvalidArgument, "Number too large");
+                    }
 
                     bool even = numberToCheck % 2 == 0;
                     bool isOne = numberToCheck == 1;
