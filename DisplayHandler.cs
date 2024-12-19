@@ -30,35 +30,34 @@ namespace PrimeTime
                     break;
 
                 case Command.CheckPrime:
-                    Console.WriteLine($"Checking if {command.Argument} is prime...");
+                    Console.WriteLine("Checking if " + command.Argument + " is prime...");
                     break;
 
                 case Command.NewDivisor:
-                    Console.WriteLine($"Checking {command.Argument} for divisibility: ");
+                    Console.WriteLine("Checking " + command.Argument + " for divisibility: ");
                     break;
 
                 case Command.NotDivisible:
-                    Console.WriteLine(" Is not divisible.");
+                    Console.WriteLine(command.Argument + " is not divisible.");
                     break;
 
                 case Command.IsPrime:
-                    Console.WriteLine($"{command.Argument} is prime!");
+                    Console.WriteLine(command.Argument + " is prime!");
                     WaitClear();
                     break;
 
                 case Command.IsNotPrime:
-                    Console.WriteLine(" Is divisible.");
-                    Console.WriteLine($"{command.Argument} is not prime!");
+                    Console.WriteLine(command.Argument + " is not prime!");
                     WaitClear();
                     break;
 
                 case Command.InvalidArgument:
-                    Console.WriteLine($"{command.Argument} is an invalid argument.");
+                    Console.WriteLine(command.Argument + " is an invalid argument.");
                     WaitClear();
                     break;
 
                 case Command.InvalidCommand:
-                    Console.WriteLine($"{command.Command} is and invalid command.");
+                    Console.WriteLine(command.Command + " is and invalid command.");
                     WaitClear();
                     break;
 
