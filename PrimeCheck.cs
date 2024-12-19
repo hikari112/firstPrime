@@ -27,13 +27,20 @@ namespace PrimeTime
                         return new CommandResult(Command.InvalidArgument, "Number too large");
                     }
 
-                    bool even = numberToCheck % 2 == 0;
-                    bool isOne = numberToCheck == 1;
                     bool isZero = numberToCheck == 0;
+                    bool isOne = numberToCheck == 1;
+                    bool isTwo = numberToCheck == 2;
 
-                    if (even || isOne || isZero)
+                    if (isZero || isOne || isTwo)
                     {
                         return Check(new CommandResult(Command.IsPrime, command.Argument));
+                    }
+
+                    bool even = numberToCheck % 2 == 0;
+
+                    if (even)
+                    {
+                        return Check(new CommandResult(Command.IsNotPrime, command.Argument));
                     }
                     
                     else
