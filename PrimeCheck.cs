@@ -27,11 +27,9 @@ namespace PrimeTime
                         return new CommandResult(Command.InvalidArgument, "Number too large");
                     }
 
-                    bool isZero = numberToCheck == 0;
-                    bool isOne = numberToCheck == 1;
-                    bool isTwo = numberToCheck == 2;
+                    bool isSmallPrime = numberToCheck <= 2;
 
-                    if (isZero || isOne || isTwo)
+                    if (isSmallPrime)
                     {
                         return Check(new CommandResult(Command.IsPrime, command.Argument));
                     }
